@@ -1,0 +1,11 @@
+.nav2{
+    background-color: #FFCF9D;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+nav2 button{
+    border: none;
+    outline: none;
+}
