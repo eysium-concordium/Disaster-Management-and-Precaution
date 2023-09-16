@@ -1,0 +1,27 @@
+.slider{
+    
+    height: 350px;
+    background-image:linear-gradient(rgba(34, 18, 18, 0.382),rgba(0, 0, 0, 0.513)  ),url(./images/flood.jpg);
+    height: 60vh;
+    background-size: cover;
+}
+.main{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    color: rgb(215, 213, 213);
+    /* margin-top:30px ; */
+    
+
+  }
+  .flex_row{
+    height: 50px;
+    justify-content: center;
+    display: flex;
+  }
+  .flex_row h1{
+    margin-left: 10px;
+    color: rgb(215, 213, 213);
+  }

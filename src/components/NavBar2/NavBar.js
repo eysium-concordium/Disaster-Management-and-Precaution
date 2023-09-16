@@ -5,11 +5,11 @@ function NavBar2(){
     return(
         <>
         <div className="nav2">
-            <button>Home</button>
-            <button>Natural Disaster</button>
-            <button>Man-Made Disaster</button>
-            <button>Emergency</button>
-            <button>Maps</button>
+            <button className="btn">Home</button>
+            <button className="btn ">Natural Disaster</button>
+            <button className="btn ">Man-Made Disaster</button>
+            <button className="btn ">Emergency</button>
+            <button className="btn ">Maps</button>
         </div>
         </>
     );

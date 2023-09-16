@@ -5,6 +5,9 @@
     align-items: center;
     justify-content: space-around;
 }
+.nav2 button{
+    font-weight: 500;
+}
 nav2 button{
     border: none;
     outline: none;
