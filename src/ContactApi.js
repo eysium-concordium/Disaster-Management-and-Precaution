@@ -1,6 +1,6 @@
 const Menu=[
 {
-    image:'./imageApi/hospital.png',
+    image:'.imageApi/hospital.png',
     text1:'HOSPITAL DEPARTMENT',
     phone:"99999999",
     email:"hospital@gmail.com",
