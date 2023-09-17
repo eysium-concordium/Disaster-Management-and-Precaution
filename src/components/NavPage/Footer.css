@@ -1,10 +1,14 @@
-.container{
+.cont2{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-direction: column;
     background-color: #F9DEC9;
     height: 100px;
+    
 }
 .cont2{
+    text-align: center;
+    width: 100vw;
     background-color: #FFCF9D;
 }

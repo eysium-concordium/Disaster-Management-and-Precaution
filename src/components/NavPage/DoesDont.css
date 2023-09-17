@@ -1,0 +1,12 @@
+.container1{
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+button{
+    margin-left: 20px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
