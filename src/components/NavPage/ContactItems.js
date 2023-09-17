@@ -1,6 +1,7 @@
 import React from 'react'
-
+import './ContactItem.css'
 import hosimg from './images/hospital-building_2749678.png'
+import Menu from '../../ContactApi';
 
 function ContactItems() {
   return (
@@ -16,6 +17,7 @@ function ContactItems() {
 
         </div>
     </div>
+    <hr />
     </>
   );
 }

@@ -12,6 +12,7 @@ function NavBar2(){
             <Link className="link" to="/manmade">Man-Made Disaster</Link>
             <Link className="link" to="/emergency">Emergency</Link>
             <Link className="link" to="/map">Map</Link>
+            <Link className="link" to="/donate">Donate</Link>
         </div>
         </>
     );

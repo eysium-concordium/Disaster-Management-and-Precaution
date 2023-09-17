@@ -1,0 +1,25 @@
+.contactItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-bottom: 2px solid black; */
+    margin-bottom: 10px;
+
+    
+}
+.firstBlock{
+    /* margin-right: 25px; */
+    padding-right: 25px;
+    padding-bottom: 15px;
+   border-right: 2px solid black;
+   /* border-bottom: 2px solid black; */
+}
+.secondBlock{
+    /* border-bottom: 2px solid black; */
+    padding-left: 25px;
+
+}
+hr{
+    margin-left: 25%;
+    margin-right: 25%;
+}

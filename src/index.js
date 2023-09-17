@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client';
 // import App from './App';
 import NavBar from './components/NavBar/NavBar';
 // import NavBar2 from './components/NavBar2/NavBar';
-import Carousel from './components/NewsSlider/Carousel';
+// import Carousel from './components/NewsSlider/Carousel';
 import NavPag from './components/NavPage/NavPag';
 
 
@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode>
     <NavBar/>
     <NavPag/>
-    <Carousel/>
+    {/* <Carousel/> */}
     {/* <App /> */}
     
   </React.StrictMode>

@@ -6,6 +6,8 @@ import Map from "./Map";
 import Emergency from "./Emergency";
 import ManMade from "./ManMade";
 import Natural from "./Natural";
+import Donation from "./Donation";
+import Home from "./Home";
 
 
 function NavPag() {
@@ -15,11 +17,12 @@ function NavPag() {
       <BrowserRouter>
       <NavBar />
       <Routes>
-        {/* <Route exact path="/"  />  */}
+        <Route exact path="/"  element={<Home/>}/> 
         <Route exact path="/natural" element={<Natural/>} /> 
         <Route exact path="/manmade" element={<ManMade/>} /> 
         <Route exact path="/emergency" element={<Emergency/>} /> 
         <Route exact path="/map" element={<Map/>} /> 
+        <Route exact path="/donate" element={<Donation/>} /> 
         
       </Routes>
       </BrowserRouter>
