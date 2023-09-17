@@ -1,0 +1,14 @@
+.table-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .hovered-content {
+    margin-left: 20px; /* Adjust the margin as needed to control the spacing */
+  }
+  P{
+    color: black;
+  }
+  .main{
+    margin-top: 20px;
+  }
