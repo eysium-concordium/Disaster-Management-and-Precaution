@@ -1,15 +1,17 @@
 import React from "react";
 import './NavBar.css'
+import { Link } from "react-router-dom";
 
 function NavBar2(){
+    
     return(
         <>
         <div className="nav2">
-            <button className="btn">Home</button>
-            <button className="btn ">Natural Disaster</button>
-            <button className="btn ">Man-Made Disaster</button>
-            <button className="btn ">Emergency</button>
-            <button className="btn ">Maps</button>
+            <Link className="link" to="/">Home</Link>
+            <Link className="link" to="/natural">Natural</Link>
+            <Link className="link" to="/manmade">Man-Made Disaster</Link>
+            <Link className="link" to="/emergency">Emergency</Link>
+            <Link className="link" to="/map">Map</Link>
         </div>
         </>
     );
