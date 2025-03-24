@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
@@ -44,13 +45,37 @@ export default function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      console.log("Login with:", { email, password, rememberMe });
+    if (!validateForm()) {
+      console.log("Cannot log in with the provided credentials");
+      return;
+    }
+    console.log("Login with:", { email, password, rememberMe });
 
-      navigate("/dashboard");
+    const content = {
+      email,
+      password,
+    };
+
+    try {
+      const res = await axios.post("http://localhost:3001/login", content, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = res.data;
+
+      if (res.data.success) {
+        navigate("/");
+      } else {
+        console.error("Login failed:", res.data.message);
+      }
+    } catch (error) {
+      console.log("Error logging in:", error);
     }
   };
 

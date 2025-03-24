@@ -85,7 +85,11 @@ app.post("/login", (req, res) => {
             { expiresIn: "1d" }
           );
           res.cookie("token", token);
-          return res.json({ Status: "Success", role: user.role });
+          return res.json({
+            success: true,
+            role: user.role,
+            message: "User logged in",
+          });
         } else {
           return res.json("The password is incorrect");
         }
