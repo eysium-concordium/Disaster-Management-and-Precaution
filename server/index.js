@@ -10,14 +10,27 @@ const { connectDB } = require("./db");
 require("dotenv").config();
 
 const app = express();
+
+const corsOptions = {
+  origin: "http://localhost:3000", // MUST be explicit, not wildcard (*)
+  credentials: true, // Required for withCredentials
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
+
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://127.0.0.1:5173"],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     // origin: ["http://127.0.0.1:5173"],
+//     origin: "*",
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   })
+// );
 app.use(cookieParser());
 
 const varifyUser = (req, res, next) => {
@@ -47,13 +60,14 @@ app.get("/dashboard", varifyUser, (req, res) => {
   res.json("Success");
 });
 
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(name, email, password);
   bcrypt
     .hash(password, 10)
     .then((hash) => {
       UserModel.create({ name, email, password: hash })
-        .then((user) => res.json("Success"))
+        .then((user) => res.json({ success: true, message: "User created" }))
         .catch((err) => res.json(err));
     })
     .catch((err) => res.json(err));
@@ -82,12 +96,23 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173");
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
 

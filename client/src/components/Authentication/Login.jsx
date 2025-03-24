@@ -76,6 +76,7 @@ export default function Login() {
             </Typography>
           }
           subheader="Enter your email and password to login to your account"
+          subheaderTypographyProps={{ align: "center" }}
           sx={{ pb: 0 }}
         />
 

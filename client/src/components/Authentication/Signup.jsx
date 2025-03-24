@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -93,15 +94,59 @@ export default function Signup() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      // In a real app, you would handle user registration here
-      console.log("Sign up with:", { username, email, password });
+    if (!validateForm()) {
+      console.log("Cannot sign up with the provided credentials");
+      return;
+    }
 
-      // Redirect to login after successful signup
-      navigate("/login");
+    console.log("Sign up with:", { username, email, password });
+
+    const content = {
+      name: username,
+      email,
+      password,
+    };
+
+    try {
+      console.log("Sending request with content:", content);
+
+      const res = await axios.post("http://localhost:3001/register", content, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("Response received:", res.data);
+
+      if (res.data.success) {
+        navigate("/login");
+      } else {
+        console.error("Registration failed:", res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      console.error("Registration error:", error);
+
+      if (error.response) {
+        console.error("Server responded with:", error.response.status);
+        console.error("Response data:", error.response.data);
+
+        if (error.response.status === 409) {
+          alert("This email is already registered");
+        } else if (error.response.status === 400) {
+          alert("Invalid registration data");
+        }
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+        alert("Network error - please try again");
+      } else {
+        console.error("Request setup error:", error.message);
+        alert("An error occurred - please try again");
+      }
     }
   };
 
@@ -125,14 +170,12 @@ export default function Signup() {
     >
       <Card sx={{ maxWidth: 450, width: "100%", boxShadow: 3 }}>
         <CardHeader
-          title="Create an account"
-          titleTypographyProps={{
-            variant: "h4",
-            align: "center",
-            fontWeight: "bold",
-          }}
+          title={
+            <Typography variant="h4" align="center" fontWeight="bold">
+              Create an account
+            </Typography>
+          }
           subheader="Enter your information to create an account"
-          subheaderTypographyProps={{ align: "center" }}
           sx={{ pb: 0 }}
         />
         <CardContent sx={{ pt: 3 }}>
