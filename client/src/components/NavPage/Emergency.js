@@ -267,9 +267,10 @@ const App = () => {
         <div className="select-container" style={{ textAlign: "center", marginBottom: "20px" }}>
           <select
             onChange={(e) => handleRowHover(e.target.value)}
+            defaultValue=""
             style={{ fontSize: "15px", padding: "10px 20px", width: "50%" }}
           >
-            <option value="">Select a State</option>
+            <option value="" disabled>Select a State</option>
             {data.map((row, index) => (
               <option key={index} value={index}>
                 {row.heading}
