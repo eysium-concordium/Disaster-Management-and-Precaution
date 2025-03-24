@@ -62,15 +62,26 @@ app.get("/dashboard", varifyUser, (req, res) => {
 
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
-  console.log(name, email, password);
-  bcrypt
-    .hash(password, 10)
-    .then((hash) => {
-      UserModel.create({ name, email, password: hash })
-        .then((user) => res.json({ success: true, message: "User created" }))
-        .catch((err) => res.json(err));
-    })
-    .catch((err) => res.json(err));
+
+  if (!name || !email || !password) {
+    return res.json({ success: false, message: "All fields are required" });
+  }
+
+  try {
+    const hashedPass = await bcrypt.hash(password, 10);
+
+    const user = await UserModel.findOne({ email: email });
+    if (user) {
+      return res.json({ success: false, message: "User already exists" });
+    }
+
+    UserModel.create({ name, email, password: hashedPass }).then((user) =>
+      res.json({ success: true, message: "User created" })
+    );
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, message: "Error creating user" });
+  }
 });
 
 app.post("/login", (req, res) => {

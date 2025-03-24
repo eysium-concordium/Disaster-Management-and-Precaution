@@ -17,6 +17,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -126,6 +127,7 @@ export default function Signup() {
         navigate("/login");
       } else {
         console.error("Registration failed:", res.data.message);
+        toast.error(res.data.message);
       }
     } catch (error) {
       console.log(error);

@@ -68,8 +68,6 @@ export default function Login() {
         },
       });
 
-      const data = res.data;
-
       if (res.data.success) {
         toast.success("Login successful!");
         navigate("/");
