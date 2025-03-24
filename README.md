@@ -14,8 +14,7 @@ Disaster Management and Precaution is a project aimed at providing efficient dis
 - **Backend**: Node.js, Express
 - **Frontend**: React.js
 - **Database**: MongoDB
-- **AI/ML**: TensorFlow, OpenCV (for disaster prediction and image analysis)
-- **Blockchain**: Smart contracts for transparent resource management
+
 
 ## Installation
 1. Clone the repository:
@@ -53,7 +52,5 @@ We welcome contributions! If you’d like to contribute:
 4. Push your branch and create a pull request.
 
 ## License
-This project is licensed under the MIT License. See `LICENSE` for details.
+This project is licensed under the MIT License.
 
-## Contact
-For any inquiries or support, please contact the project maintainers at [your-email@example.com].
