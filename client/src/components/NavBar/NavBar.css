@@ -1,39 +1,54 @@
-.navbar{
-    /* background-color: #F9DEC9; */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    font-family: Arial, sans-serif;
 }
-.con{
-    width: 100%;
-    background-color: #F9DEC9;
 
-    /* height: 50px; */
-}
-.logoName1 span{
-    font-size: 25px;
-    font-weight: 700;
-}
-.logoName1 img{
-    margin-bottom: 20px;
-    
-}
-span{
-    color: black;
-}
-.logoName3{
+.navbar-logo {
     display: flex;
     align-items: center;
-    justify-content: right;
 }
-.logoName3 span{
+
+.navbar-logo img {
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
     font-weight: bold;
+    color: #333;
 }
-.logoName2{
+
+.navbar-contact {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-item {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #555;
 }
-.logoName2 div{
-    margin-left: 100px;
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-.logoName2 div span {
-    font-weight: 500;
+
+.signin-text {
+    font-size: 1rem;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.signin-text:hover {
+    text-decoration: underline;
 }
