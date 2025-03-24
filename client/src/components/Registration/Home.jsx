@@ -1,7 +1,5 @@
 function Home() {
-    return ( 
-        <App/>
-     );
+    return <h1>Hello there</h1>;
 }
 
 export default Home;

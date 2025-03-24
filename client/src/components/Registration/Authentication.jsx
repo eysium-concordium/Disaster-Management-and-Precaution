@@ -1,22 +1,22 @@
-import Login from "./Login"
-import Signup from "./Signup"
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Dashboard from './Dashboard'
-import Home from "./Home"
+import Signup from "./Signup";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import Home from "./Home";
+import Login from "../Authentication/Login";
 
 function Authentication() {
-
   return (
-    <BrowserRouter>
+    <>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/register" element={<Signup />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/register" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/authentication" element={<Authentication />} />
+        <Route path="/" element={<Authentication />} /> */}
       </Routes>
-    </BrowserRouter>
-  )
+    </>
+  );
 }
 
-export default Authentication
+export default Authentication;
