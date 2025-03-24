@@ -1,0 +1,31 @@
+.emergency-card {
+  background-color: #FFCF9D; 
+  border: 2px solid #FFA500; 
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.emergency-card:hover {
+  transform: scale(1.035);
+  background-color: #FFD700; 
+}
+
+.emergency-card h3 {
+  color: #333;
+  font-size: 24px; 
+  font-weight: bold; 
+}
+
+.emergency-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.emergency-card li {
+  margin: 5px 0;
+  font-size: 18px; /* Increased font size */
+  color: #555; /* Darker text color */
+}
