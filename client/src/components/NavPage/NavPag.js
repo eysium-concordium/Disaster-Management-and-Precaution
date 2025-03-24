@@ -8,25 +8,27 @@ import ManMade from "./ManMade";
 import Natural from "./Natural";
 import Donation from "./Donation";
 import Home from "./Home";
-
+import Authentication from "../Registration/Authentication";
+import Login from "../Authentication/Login";
+import Signup from "../Authentication/Signup";
 
 function NavPag() {
   return (
     <>
-    
       <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route exact path="/"  element={<Home/>}/> 
-        <Route exact path="/natural" element={<Natural/>} /> 
-        <Route exact path="/manmade" element={<ManMade/>} /> 
-        <Route exact path="/emergency" element={<Emergency/>} /> 
-        <Route exact path="/map" element={<Map/>} /> 
-        <Route exact path="/donate" element={<Donation/>} /> 
-        
-      </Routes>
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/natural" element={<Natural />} />
+          <Route exact path="/manmade" element={<ManMade />} />
+          <Route exact path="/emergency" element={<Emergency />} />
+          <Route exact path="/map" element={<Map />} />
+          <Route exact path="/donate" element={<Donation />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* <Route exact path="/auth" element={<Authentication />} /> */}
+        </Routes>
       </BrowserRouter>
-    
     </>
   );
 }
