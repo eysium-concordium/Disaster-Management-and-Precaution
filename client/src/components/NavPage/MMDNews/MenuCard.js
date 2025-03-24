@@ -1,38 +1,26 @@
 import React from "react";
-// import './style.css';
+import './style.css';
+
 const MenuCard = ({ menuData }) => {
-  // console.log(menuData);
   return (
-    <>
-      <section className="main-card--container">
+    <section className="main-card-container container">
+      <div className="row">
         {menuData.map((curElem) => {
           return (
-            <>
-              <div className="card-container" key={curElem.id}>
-                <div className="card">
-                  <div className="card-body">
-                    
-                    <img
-                    src={curElem.image}
-                    alt="images"
-                    className="card-media"
-                  />
-                    <h2 className="card-title">{curElem.name}</h2>
-                    
-                    <span className="card-description subtle">
-                      {curElem.description}
-                    </span>
-                    <div className="card-read">Read</div>
-                  </div>
-                  
-                  
+            <div className="col-md-4 mb-4" key={curElem.id}>
+              <div className="card h-100 shadow-sm">
+                <img src={curElem.image} alt={curElem.name} className="card-img-top card-media" />
+                <div className="card-body d-flex flex-column">
+                  <h5 className="card-title">{curElem.name}</h5>
+                  <p className="card-text">{curElem.description}</p>
+                  <button className="btn btn-primary mt-auto">Read More</button>
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

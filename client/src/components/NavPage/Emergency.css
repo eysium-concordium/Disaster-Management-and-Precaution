@@ -1,14 +1,43 @@
-.table-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .hovered-content {
-    margin-left: 20px; /* Adjust the margin as needed to control the spacing */
-  }
-  P{
-    color: black;
-  }
-  .main{
-    margin-top: 20px;
-  }
+.emergency-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.marquee-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.marquee {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.contact-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.states-section {
+  margin-top: 20px;
+}
+
+.state-row {
+  cursor: pointer;
+}
+
+.state-row.active {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.selected-content {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
