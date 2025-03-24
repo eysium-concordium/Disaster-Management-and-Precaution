@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
@@ -70,6 +71,7 @@ export default function Login() {
       const data = res.data;
 
       if (res.data.success) {
+        toast.success("Login successful!");
         navigate("/");
       } else {
         console.error("Login failed:", res.data.message);
