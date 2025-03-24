@@ -9,6 +9,29 @@
   P{
     color: black;
   }
-  .main{
+  .eme-main{
     margin-top: 20px;
+  }
+
+  .marquee {
+    width: 100%;
+    background-color: #F9DEC9;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
   }
