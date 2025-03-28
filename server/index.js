@@ -1,44 +1,52 @@
-const express = require("express")
-const mongoose = require('mongoose')
-const cors = require("cors")
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const cookieParser = require('cookie-parser')
-const UserModel = require('./models/User')
+const express = require("express");
+const mongoose = require('mongoose');
+const cors = require("cors");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+const UserModel = require('./models/User');
+require('dotenv').config(); // Load environment variables from .env file
 
-const app = express()
-app.use(express.json())
+const app = express();
+app.use(express.json());
 app.use(cors({
-    origin: ["http://127.0.0.1:5173"],
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST"],
     credentials: true
-}))
-app.use(cookieParser())
+}));
+app.use(cookieParser());
 
-mongoose.connect('mongodb://127.0.0.1:27017/employee');
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to MongoDB");
+}).catch(err => {
+    console.error("Error connecting to MongoDB", err);
+});
 
 const varifyUser = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.json("Token is missing")
+        return res.json("Token is missing");
     } else {
-        jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
-                return res.json("Error with token")
+                return res.json("Error with token");
             } else {
                 if (decoded.role === "admin") {
-                    next()
+                    next();
                 } else {
-                    return res.json("not admin")
+                    return res.json("not admin");
                 }
             }
-        })
+        });
     }
-}
+};
 
 app.get('/dashboard', varifyUser, (req, res) => {
-    res.json("Success")
-})
+    res.json("Success");
+});
 
 app.post('/register', (req, res) => {
     const { name, email, password } = req.body;
@@ -46,9 +54,9 @@ app.post('/register', (req, res) => {
         .then(hash => {
             UserModel.create({ name, email, password: hash })
                 .then(user => res.json("Success"))
-                .catch(err => res.json(err))
-        }).catch(err => res.json(err))
-})
+                .catch(err => res.json(err));
+        }).catch(err => res.json(err));
+});
 
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
@@ -58,25 +66,19 @@ app.post('/login', (req, res) => {
                 bcrypt.compare(password, user.password, (err, response) => {
                     if (response) {
                         const token = jwt.sign({ email: user.email, role: user.role },
-                            "jwt-secret-key", { expiresIn: '1d' })
-                        res.cookie('token', token)
-                        return res.json({ Status: "Success", role: user.role })
+                            process.env.JWT_SECRET, { expiresIn: '1d' });
+                        res.cookie('token', token);
+                        return res.json({ Status: "Success", role: user.role });
                     } else {
-                        return res.json("The password is incorrect")
+                        return res.json("The password is incorrect");
                     }
-                })
+                });
             } else {
-                return res.json("No record existed")
+                return res.json("No record existed");
             }
-        })
-})
-
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173"); // Replace with your client-side origin
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+        });
 });
 
 app.listen(3001, () => {
-    console.log("Server is Running")
-})
+    console.log("Server is Running");
+});
